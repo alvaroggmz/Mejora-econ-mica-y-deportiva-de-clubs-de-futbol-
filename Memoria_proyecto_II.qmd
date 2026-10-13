@@ -1,0 +1,598 @@
+---
+title: "Memoria Proyecto II"
+author: "Alejandro Arroyo, Diego Lariz, Íñigo Utande, Álvaro González"
+format: pdf
+toc: true
+toc-title: "Índice"
+---
+
+# **1. Introducción**
+En los últimos años, el fútbol profesional ha experimentado un gran crecimiento económico, dando lugar a importantes inversiones y a la compra de clubes por parte de empresarios, fondos de inversión y exfutbolistas. Algunos ejemplos recientes son la compra del 25% de la UD Almería por parte de Cristiano Ronaldo a través de su empresa CR7 Sports Investments o la participación de Sergio Ramos en proyectos de inversión y gestión relacionados con el Sevilla FC.
+
+Al mismo tiempo, es común ver a equipos gastar auténticas millonadas cada temporada para intentar mejorar su rendimiento deportivo, ya sea mediante fichajes, salarios o inversiones en plantilla. Sin embargo, estas decisiones no siempre generan buenos resultados y, en muchos casos, pueden desembocar en problemas económicos o deportivos si los resultados esperados no se cumplen.
+
+Esto plantea una cuestión importante: ¿realmente es rentable invertir en un club de fútbol? ¿Cómo se puede saber si una decisión deportiva o económica beneficiará al club a largo plazo?
+
+Esta realidad fue una de las principales motivaciones para realizar este trabajo. Nos llamó la atención cómo el fútbol se ha convertido en un sector cada vez más atractivo para inversores, empresarios e incluso futbolistas, y cómo muchas decisiones deportivas implican grandes cantidades de dinero sin que siempre exista una garantía clara de rentabilidad. Por ello, nos pareció interesante analizar si, mediante datos deportivos y financieros, se podían plantear decisiones más eficientes para la gestión de un club.
+
+A partir de esta problemática surge la idea principal de este proyecto, cuyo objetivo es utilizar datos deportivos y financieros para analizar clubes y jugadores de LaLiga y proponer decisiones que permitan mejorar tanto el rendimiento deportivo como la situación económica de cada equipo en función de sus necesidades y objetivos.
+
+# **2. Objetivo**
+El objetivo principal es realizar análisis de optimización deportiva y financiera a través de datos de clubes y jugadores que permitan identificar formas de mejorar la gestión económica y el rendimiento deportivo.
+
+# **3. Alcance**
+El proyecto consiste en la creación de un modelo que permita optimizar la gestión financiera y deportiva de los clubes de fútbol. Para ello, se utilizarán datos relacionados con el rendimiento deportivo y el valor económico de los jugadores de los diferentes equipos de LaLiga, así como datos vinculados a la gestión financiera, económica y deportiva de los respectivos clubes. De esta forma, el modelo podrá analizar distintos escenarios y ofrecer predicciones útiles dependiendo de qué aspecto quiera mejorar cada club, ya sea el rendimiento deportivo, la eficiencia económica, el valor de plantilla u otros factores relacionados.
+
+Los principales entregables del proyecto serán un script en Python capaz de realizar las predicciones de los diferentes escenarios, una memoria elaborada en Quarto donde se explicará el desarrollo del proyecto, la metodología utilizada, los datos empleados y los resultados obtenidos, y una presentación en PowerPoint para exponer el trabajo final.
+
+El alcance del proyecto se limitará a la liga española, concretamente a LaLiga y sus respectivos clubes y jugadores. Por tanto, no se incluirán otras ligas extranjeras ni competiciones internacionales. Esta delimitación permitirá centrar el análisis en un entorno concreto y hacer que el proyecto sea más viable y manejable dentro del tiempo disponible.
+
+# **4. Objetivos SMART**
+
+## **4.1. Objetivo SMART 1**
+
+Diagnóstico de sostenibilidad
+
+* **Específico:** El objetivo es cuantificar la sostenibilidad a través de un modelo matemático.
+* **Medible:** El éxito se mide por la obtención de un porcentaje final (0-100%) y una puntuación de 0 a 5 por cada indicador.
+* **Alcanzable:** Es viable ya que utilizas datos reales de archivos CSV de finanzas y rendimiento deportivo.
+* **Relevante:** Proporciona la base analítica necesaria para identificar la salud financiera del club antes de proponer cambios.
+* **Temporal:** Tiene una fecha límite estricta vinculada al fin de la Fase 3 del proyecto en mayo de 2026.
+
+## **4.2. Objetivo SMART 2**
+
+Identificar al menos 3 fichajes potenciales con mejor relación rendimiento-coste que jugadores actuales de la plantilla.
+
+* **Específico:** Analizar el mercado de jugadores para detectar opciones de fichaje que tengan mayor rendimiento y menor coste que algunos jugadores actuales del club.
+* **Medible:** Al menos 3 jugadores recomendados para fichaje.
+* **Alcanzable:** Es viable utilizando datos disponibles como rendimiento, salario, valor de mercado, edad y lesiones de los jugadores.
+* **Relevante:** Ayuda a mejorar el rendimiento deportivo del club manteniendo el control del gasto.
+* **Temporal:** Durante la planificación de la siguiente temporada.
+
+## **4.3. Objetivo SMART 3**
+
+Determinar el porcentaje de recomendación de venta de cada jugador de la plantilla.
+
+* **Específico:** Evaluar cada jugador según variables como salario, rendimiento, edad, lesiones y valor de mercado.
+* **Medible:** Asignar un porcentaje de recomendación de venta entre 0% y 100% para cada jugador.
+* **Alcanzable:** Los datos de los jugadores permiten calcular un indice simple de eficiencia.
+* **Relevante:** Permite identificar jugadores con alto coste y bajo rendimiento.
+* **Temporal:** Análisis realizado durante el desarrollo del modelo del proyecto.
+
+# **5. Requerimientos**
+El proyecto contará con una serie de requerimientos funcionales y técnicos necesarios para garantizar el correcto funcionamiento del modelo y el cumplimiento de los objetivos planteados.
+
+## **5.1. Requerimientos funcionales**
+Los requerimientos funcionales describen las acciones y funcionalidades que debe realizar el sistema desde el punto de vista del usuario.
+El sistema deberá permitir seleccionar el club que se desea analizar y definir el objetivo principal del análisis, pudiendo enfocarse en la mejora del rendimiento deportivo o en la optimización económica del club. Además, el modelo deberá ser capaz de analizar los datos de jugadores y clubes para proponer recomendaciones relacionadas con posibles ventas y fichajes que ayuden a mejorar la situación deportiva y financiera del equipo. Asimismo, el sistema evaluará el impacto estimado de estas decisiones mediante comparaciones entre la situación inicial y la proyectada tras aplicar las recomendaciones.
+
+## **5.2. Requerimientos técnicos**
+Los requerimientos técnicos hacen referencia a las herramientas, procesos y elementos necesarios para implementar el proyecto correctamente.
+El sistema se desarrollará en Python y utilizará archivos CSV como fuente principal de datos, incluyendo información deportiva y económica tanto de jugadores como de clubes de LaLiga. El modelo deberá ser capaz de leer, unir y procesar correctamente ambos datasets para calcular estadísticas deportivas y económicas relevantes. Además, se implementará un algoritmo que evalúe el rendimiento y el coste de los jugadores para seleccionar posibles ventas y fichajes en función de criterios de eficiencia. Asimismo, el proyecto incorporará un algoritmo de análisis de sostenibilidad de los clubes basado en distintos indicadores económicos, como la autosuficiencia salarial, la revalorización de la plantilla y la eficiencia operativa. A partir de estas métricas se asignará una puntuación que permitirá estimar si la gestión económica del club es rentable y sostenible. Por último, el proyecto deberá generar resultados visuales y gráficos comparativos que faciliten la interpretación de la información obtenida y permitan analizar el impacto de las decisiones propuestas.
+
+# **6. EDT**
+![EDT](edt.png)
+La estructura del proyecto se divide en tres fases principales, que permiten organizar de forma progresiva las tareas necesarias para desarrollar un modelo de optimización de la gestión financiera y deportiva de los clubes de LaLiga.
+
+## **6.1. Fase 1**
+En esta primera fase se establecen las bases del proyecto. Se definen los objetivos SMART, el alcance del trabajo, los requerimientos principales y la planificación inicial mediante la EDT. Además, se realiza la elección y recopilación de los datasets que se utilizarán durante el proyecto. El primer dataset se obtendrá de Kaggle e incluirá información sobre las características y el rendimiento deportivo de los jugadores de los clubes de LaLiga. El segundo dataset contendrá información financiera y económica de los clubes, que será recopilada manualmente a partir de fuentes disponibles.
+
+## **6.2. Fase 2**
+En la segunda fase se llevará a cabo la parte técnica del proyecto. Primero se limpiarán, prepararán y combinarán los datos deportivos, económicos y financieros. Después se desarrollará un script en Python que permita analizar la información y generar predicciones en función de los objetivos que quiera mejorar cada club. El modelo permitirá simular diferentes escenarios, como la mejora del rendimiento deportivo, la redistribución financiera, la gestión de fichajes o la valoración de jugadores. También se evaluarán los resultados obtenidos para comprobar la utilidad del modelo.
+
+## **6.3. Fase 3**
+En la tercera fase se realizará la revisión final del proyecto. Se analizarán los riesgos encontrados durante el desarrollo, las dificultades surgidas y las soluciones aplicadas. También se elaborará la memoria del proyecto en Quarto, donde se explicarán la metodología, los datos utilizados, el modelo desarrollado y los resultados obtenidos. Por último, se preparará la presentación final en PowerPoint y se revisarán los entregables definitivos: el script de Python, la memoria y la presentación.
+
+# **7. Organización por días**
+![Planificación diaria](1.png)
+![Planificación diaria](2.png)
+La planificación del proyecto se estructuró mediante un diagrama de Gantt dividido en las tres fases principales. La Fase 1 comprendió las tres primeras semanas de marzo, dedicadas a la definición de objetivos, alcance, EDT y requerimientos. La Fase 2 se desarrolló a lo largo de cinco semanas, de abril a primeros de mayo, centrada en la programación del modelo y la simulación de escenarios. La Fase 3 ocupó las tres últimas semanas de mayo, con la elaboración de la memoria, la presentación final y los entregables definitivos.
+
+# **8. Escenarios**
+Los escenarios que lleva a cabo el modelo están divididos en tres partes:
+
+## **8.1. Análisis de la sostenibilidad de un club**
+![Sostenibilidad del club](sostenibilidad_Real_Sociedad.png)
+Lo primero que hace el modelo es un análisis de la sostenibilidad del club mediante tres parámetros:
+
+* **Autosuficiencia salarial:** Mide qué porcentaje de los ingresos le queda al club después de pagar todos los salarios.
+
+* **Revalorización de la plantilla:** Mide si los jugadores valen ahora más de lo que costó comprarlos.
+
+* **Eficiencia operativa:** Mide si el club ingresa más de lo que gasta.
+
+| Indicador | Fórmula |
+| :--- | :--- |
+| Autosuficiencia | (Ingresos - Salarios) / Ingresos x 100 |
+| VM ratio | Valor de mercado plantilla / Coste histórico traspasos |
+| Ef. operativa | Ingresos totales / Gastos totales |
+
+## **8.2. Escenario 1: aumento del rendimiento deportivo**
+Este escenario estudia mejorar el rendimiento deportivo sin límite de gasto. La idea es calcular el rendimiento según las posiciones de cada jugador y en función de su rendimiento mostrar cuáles son los jugadores que deberían abandonar el club lo antes posible debido a su bajo rendimiento y dar 7 opciones de nuevas compras. Si se cumplen esos 7 nuevos fichajes, haciendo una interpolación entre posición y rendimiento medio del club, estimamos cuántas posiciones subiría el club en tablas.
+![Escenario1: aumento del rendimiento deportivo](deportivo_Real_Sociedad.png)
+
+## **8.3. Escenario 2: mejora económica a corto plazo**
+Este escenario analiza mejorar la situación financiera del club tomando medidas con resultados inmediatos. Se estudiarán todas las variables de ingresos y gastos y en función de cada caso se recomendarán unas decisiones u otras. La eficacia del escenario se evaluaría viendo los beneficios o pérdidas que ha tenido el club comparándolo con la temporada anterior.
+![Escenario 2: mejora económica a corto plazo](financiero_corto_Real_Sociedad.png)
+
+### **8.3.1. Panel 1: ¿Cuánto mejora el balance?**
+El club parte de un balance operativo negativo de 49,9 millones de euros, lo que significa que actualmente gasta más de lo que ingresa. El plan propone un conjunto de medidas que generarían un ahorro total en costes de 14,3 millones de euros. Los nuevos ingresos proyectados son marginales a corto plazo. El resultado es un balance proyectado de -35,5 millones de euros: el déficit no desaparece en una sola temporada, pero se recorta en más de 14 millones, lo que supone una mejora del 29% respecto a la situación actual.
+
+### **8.3.2. Panel 2: ¿Dónde recortar y dónde invertir?**
+Las dos palancas de ahorro son la renegociación de la masa salarial (6% de reducción dado que el FPF del club está en nivel ELEVADO), que aportaría 5,9 millones de euros, y la reducción del gasto en fichajes hacia el objetivo sano del 8% de los ingresos, que aportaría 8,5 millones de euros. En el lado de los ingresos, el crecimiento comercial estimado es de apenas 0,1 millones, ya que la Real Sociedad está muy cerca de la mediana de LaLiga en ingresos comerciales y tiene poco margen de mejora a corto plazo.
+
+### **8.3.3. Panel 3: FPF: antes y después**
+El ratio salarial (masa salarial sobre ingresos totales) baja del 70,2% actual al 65,9% proyectado tras aplicar la renegociación salarial. Ambos valores siguen por encima de la zona segura marcada en el 60%, y el actual supera incluso la línea de riesgo del 73%, aunque se sitúa justo por debajo. La mejora es real pero insuficiente para considerarse saneada en una sola temporada: el club necesitaría continuar el ajuste en los años siguientes para alcanzar un FPF por debajo del 60%.
+
+### **8.3.4. Panel 4: Mix de ingresos actual**
+El desglose de los 139 millones de euros de ingresos anuales revela una estructura muy dependiente de los derechos televisivos, que representan el 54,5% del total. Los ingresos por matchday suponen el 15,1 %, los comerciales el 11,9% y los ingresos por competiciones el 18,4%. Esta composición confirma la alta exposición del club a una fuente de ingresos volátil: si la Real Sociedad descendiera o no clasificara para competición europea, más de la mitad de sus ingresos se vería directamente afectada.
+
+## **8.4. Escenario 3: mejora económica a largo plazo**
+Este escenario evalúa cómo mejorar la estabilidad financiera con decisiones a futuro. Se analiza la inversión en cantera, y todas las variables de ingresos y gastos. Se evaluaría comprobando si con el tiempo se aumentan los beneficios a futuro de forma sostenida.
+![Escenario 3: mejora económica a largo plazo](financiero_largo_Real_Sociedad.png)
+![Reevaluacion de sostenibilidad](reevaluacion_Real_Sociedad.png)
+
+### **8.4.1. Panel 1: ¿Cuánto dinero ganará el club cada año?**
+El punto de partida es un déficit de 50 millones de euros con ingresos de 139 M€ y gastos de 189 M€. La evolución proyectada muestra una trayectoria de mejora progresiva pero no lineal: en el año 1 el déficit se mantiene elevado en -31 M€ porque las medidas todavía no han madurado del todo; en el año 2 se reduce a -14 M€ a medida que los recortes salariales y la normalización del gasto en fichajes empiezan a consolidarse; y en el año 3 el club alcanza por primera vez el superávit, con un balance positivo de +10 M€ gracias a unos ingresos de 171 M€ frente a unos gastos que han bajado a 160 M€. Es decir, en tres temporadas la Real Sociedad pasa de gastar 50 millones más de lo que ingresa a ganar 10 millones.
+
+### **8.4.2. Panel 2: Cantera: de 15,2% a 8% de la masa salarial**
+Este panel muestra el comportamiento de la inversión en cantera y el valor de mercado que genera a lo largo del plan. La inversión se mantiene constante en 14,8 M€ cada año, pero el valor de mercado de los jugadores propios formados crece de forma exponencial: parte en 14,8 M€ en el momento actual, cae a 7,4 M€ en el año 1 (fase inicial con cantera joven sin impacto inmediato), sube a 26,6 M€ en el año 2 cuando los primeros talentos empiezan a emerger, y alcanza los 51,8 M€ en el año 3, generando un ahorro en fichajes externos de 7 M€.
+
+### **8.4.3. Panel 3: ¿Dónde recortar y dónde reinvertir?**
+Las dos grandes palancas de ahorro acumulado durante los tres años son la reestructuración salarial del 10% de la masa aplicada progresivamente, que ahorra 9,8 M€, y la normalización del gasto en fichajes hacia el objetivo del 8% de los ingresos, que aporta 12,1 M€ adicionales de ahorro.
+
+### **8.4.4. Panel 4: FPF: evolución año a año**
+Este panel muestra la trayectoria del ratio salarial a lo largo de las tres temporadas. El club parte de un FPF del 70,2%, que está en zona de riesgo aunque por debajo del umbral crítico del 73%. En el año 1 baja al 60,7%, cruzando por primera vez la línea de zona segura del 60%. En el año 2 continúa mejorando hasta el 52,1% y en el año 3 alcanza el 44,4%, situándose en un nivel que el modelo califica como excelente.
+
+### **8.4.5. Panel 5: Resumen Antes vs Después (Año 3)**
+La tabla comparativa resume el impacto total del plan en los cinco indicadores clave. El balance operativo pasa de -50 M€ a +10 M€, un vuelco de 60 millones en tres años. Los ingresos totales crecen de 139 M€ a 171 M€. La masa salarial se reduce de 98 M€ a 88 M€. El ratio FPF mejora drásticamente del 70,2% al 44,4%. La nota al pie resume: la cantera generará aproximadamente 52 M€ en valor de mercado de jugadores propios en el año 3, ahorrando 7 M€ en fichajes externos.
+
+# **9. Explicación del Modelo**
+En este apartado se explica el modelo matemático utilizado por SportConsult Pro para analizar la sostenibilidad financiera de un club y proyectar su rendimiento deportivo.
+
+## **9.1. Visión general del modelo**
+El modelo evalúa cada club desde dos dimensiones complementarias: sostenibilidad financiera, mediante un índice global que resume la salud económica del club, y rendimiento deportivo proyectado, mediante una estimación de la posición futura en liga tras aplicar cambios de plantilla. La idea principal es evitar umbrales arbitrarios y comparar cada club con la distribución real de los 20 equipos de LaLiga. De esta forma, las puntuaciones obtenidas son relativas, comparables y justificadas estadísticamente.
+
+## **9.2. Parte I: Índice de Sostenibilidad Financiera**
+El Índice de Sostenibilidad Financiera (ISF) resume la situación económica del club en un porcentaje de 0 a 100. Para calcularlo se utilizan tres métricas, cada una puntuada de 0 a 5. Después, las tres puntuaciones se suman y se normalizan.
+
+| Estado | Rango del ISF | Interpretación |
+| :--- | :--- | :--- |
+| Sostenible | $ISF\ge65\%$ | El club opera con una estructura financiera sana. |
+| En riesgo | $40\%\le ISF<65\%$ | Existen desequilibrios que requieren corrección. |
+| No sostenible | $ISF<40\%$ | Situación financiera crítica que exige medidas urgentes. |
+
+### **9.2.1. Métricas de sostenibilidad**
+
+| Métrica | Fórmula | Dirección deseada |
+| :--- | :--- | :--- |
+| FPF - Ratio salarial | Masa salarial / Ingresos totales x 100 | Menor = mejor |
+| Eficiencia operativa | Ingresos totales / Gastos totales | Mayor = mejor |
+| Revalorización de plantilla | Valor de mercado / Coste histórico de traspasos | Mayor = mejor |
+
+## **9.3. Base estadística del modelo**
+Para evitar valoraciones subjetivas, el modelo calcula la media y la desviación típica de cada métrica usando los datos de los 20 clubes de LaLiga. Estos valores definen la distribución de referencia de la competición.
+
+| Métrica | Media aproximada | Desviación típica | Rango observado |
+| :--- | :--- | :--- | :--- |
+| FPF | 60,6% | 19,4% | 0,0%-95,4% |
+| Eficiencia operativa | 0,910x | 0,163x | 0,620x-1,213x |
+| VM/coste histórico | 3,70x | 2,08x | 1,29x-8,95x |
+
+Estos parámetros se recalculan automáticamente en cada ejecución del modelo. Si cambian los datos del CSV, también cambian las medias, las desviaciones y las puntuaciones finales.
+
+## **9.4. Cálculo del z-score y puntuación de 0 a 5**
+El cálculo de cada indicador se realiza en tres pasos.
+
+### **9.4.1. Paso 1: cálculo del z-score**
+$$
+\color{black}{z = \frac{x - \text{media\_liga}}{\text{desviacion\_tipica\_liga}}}
+$$
+
+### **9.4.2. Paso 2: transformación en percentil**
+El z-score se transforma en un percentil mediante la función de distribución acumulada normal. Así se obtiene la posición relativa del club respecto al resto de equipos.
+
+### **9.4.3. Paso 3: conversión a puntos**
+Si mayor mejor: $\color{black}{\text{puntos} = 5 \times \Phi(z)}$
+
+Si menor mejor: $\color{black}{\text{puntos} = 5 \times \Phi(-z)}$
+
+En las métricas donde un valor alto es positivo, como la eficiencia operativa, se usa (z). En las métricas donde un valor bajo es mejor, como el FPF, se invierte el signo y se usa (-z).
+
+## **9.5. Métrica 1: FPF Ratio salarial**
+El FPF mide qué porcentaje de los ingresos totales del club se dedica al pago de salarios. Es un indicador importante porque una masa salarial demasiado alta reduce el margen de maniobra ante bajadas de ingresos o situaciones inesperadas.
+
+$$
+\color{black}{\text{FPF} = \frac{\text{Masa salarial}}{\text{Ingresos totales}} \times 100}
+$$
+
+$$
+\color{black}{z_{\text{FPF}} = \frac{\text{FPF\_club} - 60{,}6}{19{,}4}}
+$$
+
+$$
+\color{black}{\text{Puntos\_FPF} = 5 \times \Phi(-z_{\text{FPF}})}
+$$
+
+## **9.6. Métrica 2: Eficiencia operativa**
+La eficiencia operativa mide cuántos euros ingresa el club por cada euro que gasta. Un valor superior a 1 indica superávit operativo, mientras que un valor inferior a 1 indica déficit.
+
+$$
+\color{black}{\text{Eficiencia operativa} = \frac{\text{Ingresos totales}}{\text{Gastos totales}}}
+$$
+
+$$
+\color{black}{z_{\text{EF}} = \frac{\text{EfOp\_club} - 0{,}910}{0{,}163}}
+$$
+
+$$
+\color{black}{\text{Puntos\_EF} = 5 \times \Phi(z_{\text{EF}})}
+$$
+
+## **9.7. Métrica 3: Revalorización de plantilla**
+Esta métrica mide si el club ha generado valor económico con sus jugadores. Para ello, compara el valor de mercado actual de la plantilla con el coste histórico de traspasos.
+
+$$
+\color{black}{\text{VM\_ratio} = \frac{\text{Valor de mercado de la plantilla}}{\max(\text{Coste histórico de traspasos}, 1)}}
+$$
+
+$$
+\color{black}{z_{\text{VM}} = \frac{\text{VM\_ratio\_club} - 3{,}70}{2{,}08}}
+$$
+
+$$
+\color{black}{\text{Puntos\_VM} = 5 \times \Phi(z_{\text{VM}})}
+$$
+
+## **9.8. Índice global de sostenibilidad**
+$$
+\color{black}{\text{ISF} = \frac{\text{Puntos\_FPF} + \text{Puntos\_EF} + \text{Puntos\_VM}}{15} \times 100}
+$$
+
+El denominador 15 representa la puntuación máxima posible, ya que hay tres métricas y cada una puede alcanzar hasta 5 puntos. Un club exactamente en la media de la liga en las tres métricas obtendría un ISF del 50%.
+
+## **9.9. Escenario 1: Mejora del rendimiento deportivo**
+Este módulo describe cómo el sistema evalúa, clasifica y recomienda decisiones de plantilla orientadas a maximizar el rendimiento deportivo del club.
+
+### **9.9.1. Clasificación de clubes**
+Antes de recomendar fichajes o aplicar un plan financiero, el modelo clasifica cada club según su tamaño económico. Esta clasificación permite que las recomendaciones sean realistas, ya que no tendría sentido que un club pequeño intente fichar jugadores con un coste propio de clubes grandes. La variable utilizada para clasificar los clubes son los ingresos totales anuales, expresados en millones de euros. Se aplican tres niveles:
+
+| Nivel | Tipo de club | Criterio de ingresos | Ejemplos orientativos |
+| :--- | :--- | :--- | :--- |
+| 3 | Grande | Ingresos ≥ 300 Μ€ | Real Madrid, FC Barcelona, Atlético de Madrid |
+| 2 | Medio | Ingresos ≥ 100 ΜΕ | Athletic, Villarreal, Sevilla, Betis, Real Sociedad |
+| 1 | Pequeño | Ingresos < 100 Μ€ | Leganés, Alavés, Valladolid, Getafe, Girona |
+
+Esta clasificación se utiliza como filtro en el mercado de fichajes. Los clubes grandes buscan jugadores procedentes de clubes medianos o grandes, los clubes medianos pueden acceder a jugadores de todos los niveles y los clubes pequeños priorizan jugadores de clubes pequeños o medianos. Si el filtro deja al sistema sin candidatos disponibles, se elimina automáticamente para evitar que una posición quede sin cubrir.
+
+### **9.9.2. Rendimiento de jugadores**
+El rendimiento de los jugadores es la métrica principal del módulo deportivo. El modelo calcula para cada futbolista una puntuación final entre 0,5 y 10, donde 10 representa el máximo rendimiento posible. Esta puntuación resume en un solo valor el nivel del jugador durante la temporada, teniendo en cuenta las estadísticas más relevantes para su posición.
+
+## **9.9.3. Normalización de estadísticas**
+Para comparar correctamente a todos los jugadores de LaLiga, cada estadística se normaliza dividiendo el valor del jugador entre el valor máximo de esa misma estadística en la liga:
+
+$$
+\color{black}{\text{stat\_normalizada} = \frac{\text{valor\_del\_jugador}}{\text{max\_de\_toda\_la\_liga}}}
+$$
+
+De esta forma, el jugador con el valor más alto en una estadística obtiene 1,0 en ese componente y el resto puntúa de forma proporcional.
+
+### **9.9.4. Factor de edad**
+El modelo aplica un corrector por edad. Se considera que el pico de rendimiento se produce a los 24 años. Cuanto más se aleja un jugador de esa edad, mayor es la penalización aplicada:
+
+$$
+\color{black}{\text{factor\_edad} = -|\text{edad} - 24| \times 0{,}04}
+$$
+
+| Edad | Factor de edad | Interpretación |
+| :--- | :--- | :--- |
+| 20 | -0,16 | Jugador joven, con potencial pero menor experiencia |
+| 22 | -0,08 | Jugador en desarrollo |
+| 24 | 0,00 | Pico de rendimiento estimado |
+| 27 | -0,12 | Edad competitiva con ligera penalización |
+| 32 | -0,32 | Jugador veterano |
+| 36 | -0,48 | Penalización elevada por edad |
+
+La puntuación final se limita al rango entre 0,5 y 10:
+
+$$
+\color{black}{\text{rendimiento\_final} = \max(0{,}5, \min(10{,}0, \text{score\_bruto} + \text{factor\_edad}))}
+$$
+
+### **9.9.5. Fórmulas por posición**
+Cada posición tiene una fórmula diferente, ya que no se debe valorar igual a un portero, un defensa, un centrocampista o un delantero.
+
+**Porteros**
+Los porteros se valoran principalmente por su capacidad para parar disparos y encajar pocos goles. También se tiene en cuenta la métrica $PSxG+/-$, que mide si el portero evita más goles de los esperados según la calidad de los tiros recibidos.
+
+| Componente | Fórmula | Peso | Qué mide |
+| :--- | :--- | :--- | :--- |
+| Participación | min/max_min | 2,0 | Minutos jugados |
+| Volumen de paradas | paradas / max_paradas | 2,5 | Cantidad de paradas realizadas |
+| Efectividad | pct_paradas/100 | 1,5 | Porcentaje de disparos detenidos |
+| Goles encajados | $max(0,-goles90+2.0)/2.0$ | 1,0 | Capacidad para encajar pocos goles |
+| PSxG+/- | $(PSxG+/-+5)/10$ | 1,5 | Rendimiento frente a expectativa estadística |
+| Porterías a сeгo | p_cero/max_p_cero | 1,0 | Partidos sin encajar gol |
+
+**Defensas**
+
+| Componente | Fórmula | Peso | Qué mide |
+| :--- | :--- | :--- | :--- |
+| Participación | min/max_min | 2,0 | Presencia en el equipo |
+| Intercepciones | interc/max_interc | 1,8 | Lectura del juego |
+| Recuperaciones | recup/max_recup | 1,5 | Balones recuperados |
+| Entradas exitosas | entradas / max entradas | 1,2 | Capacidad de robo |
+| Pases | pases/max_pases | 1,0 | Salida de balón |
+| Pases progresivos | prog/max_prog | 0,8 | Progresión del juego |
+| XA | xA/max_xA | 0,5 | Aporte ofensivo |
+| Duelos aéreos | pct_aereos/100 | 0,7 | Dominio aéreo |
+
+**Centrocampistas**
+
+| Componente | Fórmula | Peso | Qué mide |
+| :--- | :--- | :--- | :--- |
+| Participación | min/max_min | 2,0 | Continuidad en el equipo |
+| Pases | pases/max_pases | 1,5 | Construcción del juego |
+| Pases progresivos | prog/max_prog | 1,2 | Capacidad de avanzar el balón |
+| Acciones de tiro | acc/max_acc | 1,0 | Generación de ocasiones |
+| XA | xA/max_xA | 1,0 | Creatividad ofensiva |
+| Recuperaciones | recup/max_recup | 0,8 | Trabajo defensivo |
+| Intercepciones | interc/max_interc | 0,8 | Lectura defensiva |
+| XG | xG/max_xG | 0,5 | Llegada al área |
+
+**Delanteros**
+
+| Componente | Fórmula | Peso | Qué mide |
+| :--- | :--- | :--- | :--- |
+| Participación | min/max_min | 1,5 | Minutos jugados |
+| XG | xG/max xG | 2,5 | Peligro real de gol |
+| XA | xA/max_xA | 1,5 | Creación ofensiva |
+| Acciones de tiro | acc/max_acc | 1,2 | Generación de disparos |
+| Pases progresivos | prog/max_prog | 0,8 | Capacidad de progresión |
+| Recuperaciones | recup/max_recup | 0,5 | Presión alta |
+
+### **9.9.6. Score de venta**
+Además del rendimiento, el sistema calcula un score de venta entre 0 y 100 para cada jugador. Cuanto mayor sea este valor, más recomendable es su salida. El cálculo combina tres aspectos: edad superior a 24 años, bajo rendimiento y salario elevado respecto a la media del club.
+
+$$
+\color{black}{\text{score\_venta} = (\text{edad} - 24)\text{.clip}(0) \times 4 + (9 - \text{rendimiento}) \times 8 + \left(\frac{\text{salario}}{\text{salario\_medio}} - 1\right)\text{.clip}(0) \times 15}
+$$
+
+| Score de venta | Etiqueta | Acción recomendada |
+| :--- | :--- | :--- |
+| 80% o más | Vender ya | Venta inmediata |
+| 60% o más | Vender | Venta recomendada esta temporada |
+| 40% o más | Analizar | Revisar contrato y rendimiento |
+| 20% o más | Conservar | Mantener en plantilla |
+| Menos del 20% | Intocable | Jugador clave |
+
+### **9.9.7. Delta de rendimiento ponderado**
+El modelo no supone que cambiar varios jugadores transforme por completo al equipo. Por eso, el impacto de los fichajes se pondera por la fracción de plantilla que realmente cambia.
+
+$$
+\color{black}{\text{Fraccion} = \frac{n\_cambios}{n\_plantilla\_total}}
+$$
+
+$$
+\color{black}{\text{Delta\_bruto} = R\_llegan - R\_salen}
+$$
+
+$$
+\color{black}{R\_proyectado = R\_actual + \text{Delta\_bruto} \times \text{Fraccion}}
+$$
+
+Si salen 7 jugadores y llegan 7 nuevos en una plantilla de 25, solo cambia el 28% del equipo. Por tanto, la mejora media de los fichajes no se aplica al 100% del rendimiento del club, sino únicamente a esa fracción.
+
+### **9.9.8. Re-ranking relativo entre clubes**
+Después de calcular el rendimiento proyectado del club, el modelo sustituye su valor en la tabla de rendimiento medio de los 20 equipos y vuelve a ordenar la clasificación.
+
+$$
+\color{black}{\text{tabla\_nueva} = \text{tabla\_actual con } R\_club = R\_proyectado}
+$$
+
+$$
+\color{black}{\text{posicion\_calculada} = \text{ranking del club en la tabla ordenada}}
+$$
+
+Este método mantiene la coherencia competitiva, porque la posición del club depende de su rendimiento relativo frente al resto de equipos.
+
+### **9.9.9. Techo de mejora máxima realista**
+Para evitar proyecciones poco realistas, el modelo limita cuántos puestos puede subir un club en una sola temporada. La mejora máxima depende del porcentaje de plantilla renovada.
+
+$$
+\color{black}{\text{Mejora\_maxima} = \max(1, \text{round}(\text{Fraccion} \times 18))}
+$$
+
+Por ejemplo, si se renueva el 28% de la plantilla, la mejora máxima permitida es de unos 5 puestos. Esto impide que un equipo pase de la parte baja a puestos de Champions solo por unos pocos fichajes.
+
+### **9.9.10. Posición proyectada final**
+La posición final combina el re-ranking con el techo de mejora máxima.
+
+$$
+\color{black}{\text{Posicion\_proyectada} = \max(\text{Posicion\_calculada}, \text{Posicion\_actual} - \text{Mejora\_maxima})}
+$$
+
+Como una posición más baja numéricamente es mejor, el modelo elige la opción más conservadora entre el resultado calculado y el límite de mejora permitido.
+
+## **9.10. Escenario 2: Mejora económica a corto plazo**
+El plan de corto plazo diseña medidas aplicables en una sola temporada. Su objetivo principal es mejorar el balance del club mediante la reducción de gastos y el aumento de ingresos sin realizar cambios estructurales profundos.
+
+### **9.10.1. Reducción de masa salarial**
+El modelo propone reducir la masa salarial en función de la gravedad del ratio salarial:
+
+| Situación del FPF | Reducción recomendada |
+| :--- | :--- |
+| $FPF\ge85\%$ | 18% |
+| $FPF\ge73\%$ | 12% |
+| $FPF\ge60\%$ | 6% |
+| $FPF<60\%$ | 3% |
+
+$$
+\color{black}{\text{ahorro\_masa\_CP} = \text{masa\_salarial} \times \text{pct\_reduccion\_CP}}
+$$
+
+### **9.10.2. Diversificación de ingresos**
+El modelo compara los ingresos comerciales y de matchday del club con la mediana de LaLiga. Si el club está por debajo de la mediana, existe margen para aumentar ingresos mediante patrocinio, merchandising, abonos o taquilla.
+
+$$
+\color{black}{\text{margen\_comercial} = \max(0, \text{mediana\_liga\_comercial} - \text{pct\_comercial\_club})}
+$$
+
+$$
+\color{black}{\text{margen\_matchday} = \max(0, \text{mediana\_liga\_matchday} - \text{pet\_matchday\_club})}
+$$
+
+A corto plazo, el crecimiento máximo considerado es del 12% para ingresos comerciales y del 8% para matchday.
+
+### **9.10.3. Reducción del gasto en fichajes**
+El modelo fija como referencia saludable que el gasto en fichajes no supere el 8% de los ingresos totales. Si el club supera ese límite, se recorta el exceso de manera gradual.
+
+$$
+\color{black}{\text{objetivo\_fichajes} = \text{ingresos\_totales} \times 0{,}08}
+$$
+
+$$
+\color{black}{\text{exceso} = \max(0, \text{gasto\_fichajes} - \text{objetivo\_fichajes})}
+$$
+
+$$
+\color{black}{\text{reduccion\_fichajes\_CP} = \text{exceso} \times 0{,}70}
+$$
+
+### **9.10.4. Resultado del plan a corto plazo**
+El balance final del escenario a corto plazo se calcula sumando el ahorro generado y los ingresos adicionales obtenidos:
+
+$$
+\color{black}{\text{ahorro\_total\_CP} = \text{ahorro\_masa\_CP} + \text{reduccion\_fichajes\_CP}}
+$$
+
+$$
+\color{black}{\text{ingresos\_extra\_CP} = \text{extra\_comercial\_CP} + \text{extra\_matchday\_CP}}
+$$
+
+$$
+\color{black}{\text{nuevo\_balance} = (\text{ingresos\_original} + \text{ingresos\_extra\_CP}) - (\text{gastos\_original} - \text{ahorro\_total\_CP})}
+$$
+
+## **9.11. Escenario 3: Mejora económica a largo plazo**
+El plan a largo plazo proyecta la evolución financiera del club durante tres temporadas. Aplica medidas similares al corto plazo, pero con objetivos más ambiciosos y añade una palanca específica: la inversión en cantera.
+
+### **9.11.1. Reducción salarial a largo plazo**
+La reducción salarial se aplica de forma progresiva durante tres años:
+
+| Situación del FPF | Reducción total a 3 años |
+| :--- | :--- |
+| $FPF\ge85\%$ | 28% |
+| $FPF\ge73\%$ | 20% |
+| $FPF\ge60\%$ | 10% |
+| $FPF<60\%$ | 5% |
+
+### **9.11.2. Diversificación de ingresos a largo plazo**
+En el largo plazo, los límites de crecimiento son más altos: hasta un 25% en ingresos comerciales y hasta un 18% en matchday. Además, se incorpora un crecimiento orgánico anual estimado del 7%.
+
+$$
+\color{black}{\text{ingresos\_Y1} = \text{ingresos\_Y0} \times 1{,}07 + \text{extra\_comercial\_LP} \times 0{,}33}
+$$
+
+$$
+\color{black}{\text{ingresos\_Y2} = \text{ingresos\_Y0} \times 1{,}07^2 + \text{extra\_comercial\_LP} \times 0{,}66 + \text{extra\_matchday\_LP} \times 0{,}50}
+$$
+
+$$
+\color{black}{\text{ingresos\_Y3} = \text{ingresos\_Y0} \times 1{,}07^3 + \text{extra\_comercial\_LP} + \text{extra\_matchday\_LP}}
+$$
+
+### **9.11.3. Reducción del gasto en fichajes a largo plazo**
+A largo plazo, el modelo elimina el 100% del exceso sobre el presupuesto saludable de fichajes:
+
+$$
+\color{black}{\text{reduccion\_fichajes\_LP} = \max(0, \text{gasto\_fichajes} - \text{objetivo\_fichajes})}
+$$
+
+### **9.11.4. Palanca 4: recomendación de inversión en cantera**
+La inversión en cantera se aplica exclusivamente en el escenario de mejora económica a largo plazo, porque sus efectos no suelen verse de forma inmediata. Su objetivo es reducir la dependencia del mercado de fichajes y generar valor deportivo desde dentro del club.
+
+### **9.11.5. Distribución estadística de la inversión en cantera**
+El modelo calcula el ratio de inversión en cantera de cada club de LaLiga:
+
+$$
+\color{black}{\text{ratio\_cantera} = \frac{\text{Inversión en cantera}}{\text{Ingresos totales}} \times 100}
+$$
+
+A partir de los 20 ratios se calcula la mediana y la desviación típica. La mediana se utiliza porque es más resistente a valores extremos que la media.
+
+### **9.11.6. Objetivo de inversión en cantera**
+El objetivo de inversión se obtiene sumando una desviación típica a la mediana de la liga:
+
+$$
+\color{black}{\text{objetivo\_pct} = \text{Mediana}(\text{ratio\_cantera}) + \text{desviacion\_tipica}(\text{ratio\_cantera})}
+$$
+
+$$
+\color{black}{\text{objetivo\_cantera\_abs} = \frac{\text{objetivo\_pct}}{100} \times \text{Ingresos\_club}}
+$$
+
+Si el club ya supera ese objetivo, el modelo recomienda aumentar la inversión actual en un 10% para mantener una política de mejora continua.
+
+### **9.11.7. Distribución del incremento en tres temporadas**
+La diferencia entre la inversión actual y el objetivo se reparte en tres años:
+
+$$
+\color{black}{\text{incremento\_anual} = \max\left(1{,}0, \frac{\text{objetivo\_cantera\_abs} - \text{cantera\_actual}}{3}\right)}
+$$
+
+Además, el incremento anual no puede superar el 25% del ahorro salarial proyectado a largo plazo. Así se evita que la inversión en cantera genere tensiones financieras.
+
+### **9.11.8. ROI de cantera**
+El retorno de la inversión en cantera se modela de forma progresiva:
+
+| Año | Fórmula | Interpretación |
+| :--- | :--- | :--- |
+| Y1 | $\color{black}{\text{cantera\_Y1} = Y1 \times 1{,}0}$ | Efecto inicial limitado. |
+| Y2 | $\color{black}{\text{cantera\_Y2} = Y2 \times 1{,}8}$ | Primeros talentos con impacto deportivo. |
+| Y3 | $\color{black}{\text{cantera\_Y3} = Y3 \times 3{,}5}$ | Jugadores con valor de mercado o ahorro en fichajes. |
+
+En el año 3, el modelo estima que cada millón invertido puede generar aproximadamente 3,5 M€ de valor de mercado en jugadores propios.
+
+### **9.11.9. Ahorro en gasto de fichajes derivado de la cantera**
+El valor generado por la cantera reduce la necesidad de acudir al mercado exterior. El ahorro estimado se calcula de forma conservadora:
+
+$$
+\color{black}{\text{ahorro\_fichajes\_cantera\_Y3} = \min(\text{roi\_cantera\_Y3} \times 0{,}15, \text{gasto\_fichajes} \times 0{,}30)}
+$$
+
+El primer término representa el ahorro potencial por usar jugadores propios. El segundo término limita el ahorro al 30% del gasto actual en fichajes para evitar una estimación excesivamente optimista.
+
+# **10. Dificultades**
+
+## **10.1. Búsqueda y obtención de datos**
+Una de las principales dificultades del proyecto ha sido encontrar datos financieros fiables y comparables de los clubes de LaLiga. Aunque muchos clubes publican sus cuentas anuales o información en sus páginas de transparencia, cada uno lo hace con formatos y niveles de detalle diferentes, lo que complica bastante la recopilación. Finalmente, para el rendimiento deportivo de los jugadores, hemos utilizado un dataset de Kaggle. Además, creamos otro dataset propio investigando y contrastando la información financiera de los clubes de forma manual, revisando fuentes oficiales y adaptando los datos a las variables necesarias para el análisis.
+
+## **10.2. Definición de escenarios**
+Otra dificultad importante del proyecto ha sido definir los distintos escenarios de mejora para la gestión financiera y deportiva de los clubes. No era suficiente con analizar los datos actuales, sino que también había que plantear posibles situaciones futuras y comparar sus efectos. Al principio no teníamos claro qué escenarios eran los más adecuados para la gestión financiera, ni cuáles podían representarse mejor de forma gráfica y coherente para medir la economía de los clubes. Además, muchas decisiones deportivas, como fichajes o salarios, pueden mejorar el rendimiento inmediato, pero también aumentar los gastos y afectar a la estabilidad económica del club. Por eso, fue necesario seleccionar escenarios realistas y comparables entre equipos, teniendo en cuenta las variables disponibles y las limitaciones de datos.
+
+## **10.3. Definición de las bases del proyecto**
+Otra dificultad del proyecto fue establecer correctamente sus bases desde el principio. Antes de empezar con el análisis, tuvimos que organizar aspectos clave como el reparto de tareas, los objetivos SMART, el alcance del trabajo y el tipo de datos que íbamos a utilizar. Esta parte fue importante porque al principio había muchas posibilidades: analizar varias ligas, centrarnos solo en LaLiga, incluir todos los equipos o seleccionar una muestra concreta. También tuvimos que decidir qué variables eran realmente útiles y cómo repartir el trabajo para que el proyecto avanzara de forma ordenada. Definir bien estos puntos nos ayudó a limitar el alcance, evitar un análisis demasiado amplio y trabajar con objetivos más claros y realistas.
+
+# **11. Riesgos y prevenciones**
+Durante el desarrollo del proyecto pueden aparecer distintos riesgos relacionados tanto con la calidad de los datos como con el funcionamiento del modelo y la obtención de resultados fiables. Por ello, es importante identificar estos posibles problemas y establecer medidas de prevención que permitan reducir su impacto.
+
+Uno de los principales riesgos es la utilización de datos incorrectos o incompletos en los archivos CSV empleados para el análisis. La presencia de errores, valores vacíos o información inconsistente puede afectar directamente a los resultados obtenidos por el modelo y generar recomendaciones poco fiables. Para prevenir este problema se realizará una limpieza y validación previa de los datos, utilizando fuentes fiables y revisando posibles errores o valores extremos antes de procesarlos.
+
+Otro riesgo importante es la mala integración de los datasets de jugadores y clubes. Al trabajar con información procedente de diferentes archivos, pueden aparecer errores al relacionar los equipos o cruzar los datos correctamente. Para evitarlo, se unificarán los nombres de clubes y se validará la unión de ambos datasets antes de realizar el análisis final.
+
+Además, existe el riesgo de generar recomendaciones poco realistas desde el punto de vista deportivo o económico, como fichajes imposibles o decisiones inviables para determinados clubes. Para reducir este problema, el modelo tendrá en cuenta restricciones económicas y deportivas, como el salario de los jugadores, el valor de mercado o el rendimiento esperado.
+
+# **12. Next Steps**
+
+## **12.1. Automatización de los datos**
+Una posible mejora del modelo sería automatizar la forma de obtener los datos financieros de los clubes. Actualmente, este proceso requiere buscar manualmente la información en las memorias anuales de los clubes, lo que puede consumir mucho tiempo y aumentar el riesgo de errores. La automatización permitiría que el modelo extrajera directamente variables como ingresos, gastos, deuda, salarios, valor de plantilla o inversión en fichajes. De esta forma, el modelo sería más rápido, escalable y fácil de actualizar cada temporada. Además, permitiría analizar más clubes sin tener que repetir todo el proceso de recopilación de datos desde cero.
+
+## **12.2. Expansión a otras ligas o deportes**
+Otra línea de mejora sería aplicar el modelo a otras competiciones, tanto dentro del fútbol como en otros deportes. En el caso del fútbol, podría utilizarse para analizar clubes de ligas como la Premier League, Serie A, Bundesliga, Ligue 1 o competiciones internacionales. Ampliar el modelo a otras ligas permitiría mejorar la recomendación de fichajes. Al disponer de datos de jugadores de distintas competiciones, el modelo podría identificar futbolistas de otras ligas que encajen con las necesidades deportivas y económicas del club. Por ejemplo, si el equipo necesita un lateral derecho, un pivote o un extremo, el sistema podría buscar perfiles similares en otras competiciones y recomendar aquellos que ofrezcan mejor relación entre rendimiento, coste y potencial de revalorización.
+
+## **12.3. Simulación de escenarios porcentuales**
+Una tercera mejora sería permitir que el modelo analizara escenarios basados en variaciones porcentuales. En el modelo actual no se contempla qué ocurriría si el club modificara su estrategia económica en un determinado porcentaje. Por ejemplo, el modelo podría simular qué pasaría si un club aumenta un 10% su gasto en plantilla, reduce un 5% su gasto salarial, incrementa un 15% la inversión en cantera o destina un 8% más a fichajes. Esto permitiría comparar el escenario actual con distintos escenarios alternativos y valorar cuál sería más eficiente.
+
+## **12.4. Mayor precisión en las posiciones de los jugadores**
+Otra posible mejora del modelo sería incorporar una clasificación más detallada de las posiciones de los jugadores. Actualmente, el modelo agrupa a los futbolistas en categorías como portero, defensa, centrocampista y delantero. Sin embargo, esta división puede resultar demasiado amplia, ya que dentro de cada grupo existen perfiles muy diferentes. Por ejemplo, no tiene las mismas funciones un central que un lateral derecho, ni un mediocentro defensivo que un media punta. Cada posición requiere métricas específicas para valorar correctamente el rendimiento del jugador. Esta mejora haría que las recomendaciones deportivas fueran más útiles. Por ejemplo, podría detectar que el club no necesita reforzar la defensa en general, sino específicamente el lateral derecho o el mediocentro defensivo.
